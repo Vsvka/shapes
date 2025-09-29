@@ -4,6 +4,7 @@
 #include <cassert>
 using namespace std;
 
+//General declaration
 class Shape {
 public:
     virtual double getArea() const = 0;
@@ -12,7 +13,7 @@ public:
     virtual ~Shape() = default;
 };
 
-
+//for circle
 class Circle : public Shape {
     double r;
 public:
@@ -23,6 +24,7 @@ public:
 };
 
 
+//for Rectangle
 class Rectangle : public Shape {
     double w, h;
 public:
@@ -35,7 +37,7 @@ private:
     double height() const { return h; }
 };
 
-
+//for RightTriangle
 class RightTriangle : public Shape {
     double b, h;
 public:
@@ -49,14 +51,14 @@ private:
 };
 
 
-
+//for Rectangle
 class Square : public Rectangle {
 public:
     Square(double side) : Rectangle(side, side) {}
     const char* name() const override { return "Square"; }
 };
 
-
+//for IsoscelesRightTriangle
 class IsoscelesRightTriangle : public RightTriangle {
 public:
     IsoscelesRightTriangle(double leg) : RightTriangle(leg, leg) {}
@@ -64,16 +66,16 @@ public:
 };
 
 
-
+//function for printing values
 void printAreaToScreen(Shape* form) {
     if (form) {
         cout << form->name() << ":\n" << "Area: " << form->getArea()<< "\nPerimeter: " << form->getPerimeter()<< "\n \n";
     }
 }
 
+//main function for declarations
 int main() {
-
-
+    
     Circle circ(5);
     printAreaToScreen(&circ);
     assert(abs(circ.getArea() - (M_PI * 25)) < 0.000001);
